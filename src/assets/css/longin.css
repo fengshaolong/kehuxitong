@@ -1,0 +1,88 @@
+
+@import  './categoryFirst.css';
+@import  './categorySecond.css';
+
+
+
+
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td 
+{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Helvetica, STHeiti STXihei, Microsoft YaHei, Arial;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+}
+
+.bg img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle；
+}
+
+.con {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 380px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.con p {
+    line-height: 110px;
+    text-align: center;
+    font-size: 22px;
+
+}
+
+
+.user input,
+.psd input {
+    outline: none;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 5px;
+    line-height: 50px;
+}
+
+.btn input {
+    color: #333;
+    display: block;
+    width: 100%;
+    height: 46px;
+}

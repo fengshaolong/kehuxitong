@@ -1,0 +1,29 @@
+/*
+* @Author: 宋鑫丰
+* @Date:   2018-05-18 22:27:59
+* @Last Modified by:   宋鑫丰
+* @Last Modified time: 2018-05-18 23:22:59
+*/
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	
+   font-family: Helvetica, STHeiti STXihei, Microsoft YaHei, Arial;
+}
+body {
+   	background-image: url('../assets/QQ图片20180517101037.jpg');
+	background-size: 100% 100%;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+img{
+	vertical-align: middle;	
+}

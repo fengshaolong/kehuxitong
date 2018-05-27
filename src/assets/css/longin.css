@@ -2,19 +2,6 @@
 @import  './categoryFirst.css';
 @import  './categorySecond.css';
 
-
-
-
-
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td 
-{
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: Helvetica, STHeiti STXihei, Microsoft YaHei, Arial;
-}
-
 a {
     text-decoration: none;
 }
@@ -73,7 +60,7 @@ body {
 
 .btn {
     margin-top: 20px;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     background-color: #eee;
     border-radius: 5px;
@@ -83,6 +70,6 @@ body {
 .btn input {
     color: #333;
     display: block;
-    width: 100%;
+    /* width: 100%; */
     height: 46px;
 }

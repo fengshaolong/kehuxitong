@@ -8,64 +8,122 @@
   <div class="con" action="?" method="POST" onsubmit="return checkall();">
     <p>恒逸客户分层分级系统</p>
     <div class="user">
-      <input type="text" placeholder="账号" name="username" id="use" onblur="checkname()"><span id='s1'></span>
+      <input type="text" v-model="formData.username" placeholder="账号" name="username" id="use"  required /><span id='s1'></span>
     </div>
     <div class="psd">
-      <input type="password" placeholder="密码" onblur="checkpwd();" name="password" id="psd"><span id='s2'></span>
+      <input type="password" v-model="formData.password" placeholder="密码"  name="password" id="psd" required /><span id='s2'></span>
     </div>
     <div class="btn">
-      <input type="submit" value="登录" class="bn" id="butt" />
+      <el-row>
+        <el-button type="primary" class="bn" id="butt" @click="handleLogin()"><a href="categoryFirst">登录</a></el-button>
+      </el-row>
+      <!-- <input type="submit" value="登录" class="bn" id="butt" @click="handleLogin()" /> -->
+      <div v-show="isLogedFailed"  role="alert">登陆失败</div>
+     
     </div>
   </div>
 </div>
 </template>
 
 <script>
-// // 登录
-//     function $(id) {
-//       return document.getElementById(id);
+
+
+import { saveToken } from '../../assets/js/auth'
+
+
+export default {
+  
+  data () {
+    return {
+      formData: {
+        username: '',
+        password: ''
+      },
+      isLogedFailed: false
+    }
+  },
+
+  methods: {
+    handleLogin () {
+      this.$http.post('/auth', this.formData, {
+        nprogress: true
+      }).then(res => {
+        const status = res.status
+        if (status === 201) {
+          saveToken(res.data) 
+          this.$router.push(this.$route.query.redirect || '/')
+        }
+      }).catch(err => {
+        if (err.response && err.response.status === 401) {
+          // window.alert('登陆失败')
+          this.isLogedFailed = true
+        }
+      })
+      console.log(this.formData.username)
+      
+      }
+    }
+  }
+// Vue.prototype.ajax = function (options) {
+//   let that = this;
+//   let reqData = {};
+//   reqData.url = '/api/cms' + options.api;
+//   reqData.headers = {
+//     "Content-Type": "application/json;charset=utf-8"
+//   }
+//   reqData.method = 'post';
+//   reqData.data = options.data ? options.data : {};
+
+//   axios(reqData).then(function (response) {
+//     if (response.data.code == '0') {
+//       options.success({
+//         suc: true,
+//         errCode: '',
+//         errMsg: '',
+//         data: response.data.data
+//       })
+//     } else {
+//       that.$message.error(response.data.message);
+//       options.success({
+//         suc: false,
+//         errCode: response.data.code,
+//         errMsg: response.data.message,
+//         data: response.data.data
+//       })
 //     }
-//     //验证姓名
-//     function checkname() {
-//       var name = $("use").value;
-//       if (name == '') {
-//         $('s1').innerHTML = '姓名不能为空';
-//         $('s1').style.color = 'red';
-//         return false;
-//       }
-//       else {
-//         $('s1').innerText = 'ok';
-//         $('s1').style.color = 'green';
-//         return true;
-//       }
-//     }
-//     //验证密码
-//     function checkpwd() {
-//       var password = $("psd").value;
-//       if (password == '') {
-//         $('s2').innerHTML = '密码不能为空';
-//         $('s2').style.color = 'red';
-//         return false;
-//       }
-//       else {
-//         $('s2').innerHTML = 'ok';
-//         $('s2').style.color = 'green';
-//         return true;
-//       }
-//     }
-//     //验证所有表单提交
-//     function checkall() {
-//       if (checkname() && checkpwd()) {
-//         return true;
-//       }
-//       else {
-//         return false;
-//       }
-//     }
+//   }).catch(function (error) {
+//     console.log(error)
+//   });
+// },
+//  that.ajax({
+//           api: '/user/detail',
+//           data: reqData,
+//           success: function(res){
+//             if(res.suc){
+//               let property =  res.data.property;
+//               if(property.length){
+//                 property.forEach(function(item,index){
+//                   for(var key in item){
+
+//                     if(key == "名称"){
+//                         that.userName = item[key]
+//                     }
+//                     let keyValue = {
+//                       key: key,
+//                       value: item[key]
+//                     }
+//                     that.userdetailData.push(keyValue)
+//                   }
+//                 })
+//               }
+//             }
+//             that.userdetailLoding = false;
+//           }
+//         })
 </script>
 
 
 <style>
-
+  /* @import '../assets' */
 </style>
 
